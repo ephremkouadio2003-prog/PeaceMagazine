@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panneau d'Administration - Peace Magazine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #F5C542;
+            --secondary-color: #FFB300;
+            --dark-color: #1A1A1A;
+            --light-color: #FFF3E0;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .stat-card .card-body {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending { background-color: #ffc107; color: #000; }
+        .status-confirmed { background-color: #17a2b8; color: white; }
+        .status-in-progress { background-color: #007bff; color: white; }
+        .status-completed { background-color: #28a745; color: white; }
+        .status-cancelled { background-color: #dc3545; color: white; }
+
+        .payment-paid { background-color: #28a745; color: white; }
+        .payment-pending { background-color: #ffc107; color: #000; }
+        .payment-failed { background-color: #dc3545; color: white; }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner-border {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h4 class="text-white">
+                            <i class="fas fa-crown me-2"></i>
+                            Peace Magazine
+                        </h4>
+                        <small class="text-white-50">Administration</small>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-section="dashboard">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Tableau de bord
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="orders">
+                                <i class="fas fa-shopping-cart me-2"></i>
+                                Commandes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="leads">
+                                <i class="fas fa-users me-2"></i>
+                                Leads
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="files">
+                                <i class="fas fa-file-image me-2"></i>
+                                Fichiers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="users">
+                                <i class="fas fa-user-cog me-2"></i>
+                                Utilisateurs
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="analytics">
+                                <i class="fas fa-chart-line me-2"></i>
+                                Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="settings">
+                                <i class="fas fa-cog me-2"></i>
+                                Paramètres
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <!-- Header -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2" id="page-title">Tableau de bord</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-download me-1"></i>
+                                Exporter
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary" id="refresh-btn">
+                            <i class="fas fa-sync-alt me-1"></i>
+                            Actualiser
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Section -->
+                <div id="dashboard-section" class="content-section">
+                    <!-- Stats Cards -->
+                    <div class="row mb-4">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card stat-card">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Commandes Total
+                                            </div>
+                                            <div class="stat-number" id="total-orders">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-shopping-cart fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card stat-card">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Chiffre d'Affaires
+                                            </div>
+                                            <div class="stat-number" id="total-revenue">0 FCFA</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card stat-card">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Leads Actifs
+                                            </div>
+                                            <div class="stat-number" id="active-leads">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card stat-card">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">
+                                                Taux de Conversion
+                                            </div>
+                                            <div class="stat-number" id="conversion-rate">0%</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-percentage fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Évolution des Commandes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="ordersChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Statuts des Commandes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="statusChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="m-0 font-weight-bold text-primary">Commandes Récentes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="recent-orders-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Numéro</th>
+                                                    <th>Client</th>
+                                                    <th>Occasion</th>
+                                                    <th>Statut</th>
+                                                    <th>Prix</th>
+                                                    <th>Date</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="7" class="text-center">
+                                                        <div class="loading">
+                                                            <div class="spinner-border" role="status">
+                                                                <span class="visually-hidden">Chargement...</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <div id="orders-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Gestion des Commandes</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary" id="filter-orders">
+                                    <i class="fas fa-filter me-1"></i>
+                                    Filtrer
+                                </button>
+                                <button class="btn btn-sm btn-primary" id="add-order">
+                                    <i class="fas fa-plus me-1"></i>
+                                    Nouvelle Commande
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Numéro</th>
+                                            <th>Client</th>
+                                            <th>Occasion</th>
+                                            <th>Statut</th>
+                                            <th>Paiement</th>
+                                            <th>Prix</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8" class="text-center">
+                                                <div class="loading">
+                                                    <div class="spinner-border" role="status">
+                                                        <span class="visually-hidden">Chargement...</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leads Section -->
+                <div id="leads-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Gestion des Leads</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary" id="filter-leads">
+                                    <i class="fas fa-filter me-1"></i>
+                                    Filtrer
+                                </button>
+                                <button class="btn btn-sm btn-primary" id="add-lead">
+                                    <i class="fas fa-plus me-1"></i>
+                                    Nouveau Lead
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="leads-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Contact</th>
+                                            <th>Occasion</th>
+                                            <th>Source</th>
+                                            <th>Score</th>
+                                            <th>Statut</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="8" class="text-center">
+                                                <div class="loading">
+                                                    <div class="spinner-border" role="status">
+                                                        <span class="visually-hidden">Chargement...</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other sections will be added here -->
+                <div id="files-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Gestion des Fichiers</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Section des fichiers en cours de développement...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="users-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Gestion des Utilisateurs</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Section des utilisateurs en cours de développement...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="analytics-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Analytics Avancées</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Section analytics en cours de développement...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="settings-section" class="content-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 font-weight-bold text-primary">Paramètres</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Section des paramètres en cours de développement...</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

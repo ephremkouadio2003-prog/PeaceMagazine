@@ -1,0 +1,14 @@
+{
+  "name": "peace-magazine",
+  "version": "1.0.0",
+  "description": "Site web premium pour la commande en ligne de magazines personnalisés de luxe",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "dev": "python3 -m http.server 8080",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": ["magazine", "personalized", "luxury", "website"],
+  "author": "Peace Magazine Team",
+  "license": "MIT"
+}
