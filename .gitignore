@@ -71,3 +71,4 @@ node_modules/
 # Uploaded files
 backend/uploads/
 uploads/
+.DS_Store
