@@ -79,3 +79,8 @@ git push --force --tags origin
 2. **Configurer les nouvelles clés** dans votre fichier `.env` local
 3. **Vérifier que `.gitignore` contient `.env`** (✅ déjà fait)
 4. **Ne jamais commiter** les fichiers `.env` ou les clés en dur
+
+
+
+
+

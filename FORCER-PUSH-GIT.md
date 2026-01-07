@@ -46,3 +46,8 @@ git log --all -S "xkeysib-VOTRE_CLE_BREVO_ICI" --oneline
 ```
 
 Ces commandes ne doivent retourner aucun résultat.
+
+
+
+
+

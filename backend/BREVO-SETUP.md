@@ -116,3 +116,8 @@ Vous pouvez consulter les statistiques d'envoi dans votre tableau de bord Brevo 
 
 
 
+
+
+
+
+

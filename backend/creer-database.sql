@@ -11,3 +11,8 @@ SELECT 'Base de données peace_magazine créée avec succès !' AS message;
 
 
 
+
+
+
+
+

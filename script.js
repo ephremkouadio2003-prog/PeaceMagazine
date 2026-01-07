@@ -2775,16 +2775,13 @@ function initializeHeyzineGallery() {
     }
 
     // Ajouter les fonctionnalités de feuilletage aux éléments de la galerie
-    document.querySelectorAll('.gallery-item').forEach((item) => {
+    document.querySelectorAll('.gallery-item').forEach(async (item) => {
         const pdfUrl = item.getAttribute('data-pdf-url');
         
         if (!pdfUrl) {
             return; // Pas de PDF pour cet élément
         }
 
-        // Convertir le chemin relatif en URL absolue pour Heyzine
-        const absolutePdfUrl = getAbsoluteUrl(pdfUrl);
-        
         // Rendre l'image cliquable
         const galleryImage = item.querySelector('.gallery-image');
         if (galleryImage) {
@@ -2800,16 +2797,18 @@ function initializeHeyzineGallery() {
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background: rgba(0, 0, 0, 0.7);
+                    background: linear-gradient(135deg, rgba(245, 197, 66, 0.95) 0%, rgba(255, 179, 0, 0.95) 100%);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
                     opacity: 0;
-                    transition: opacity 0.3s ease;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     border-radius: var(--border-radius);
                     color: white;
                     font-weight: 600;
+                    backdrop-filter: blur(2px);
+                    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
                 `;
             }
             
@@ -2818,6 +2817,24 @@ function initializeHeyzineGallery() {
                 if (e) {
                     e.preventDefault();
                     e.stopPropagation();
+                }
+                
+                // Afficher un indicateur de chargement
+                if (overlay) {
+                    overlay.innerHTML = `
+                        <div style="text-align: center;">
+                            <div class="loading-spinner" style="
+                                width: 50px;
+                                height: 50px;
+                                border: 4px solid rgba(255, 255, 255, 0.3);
+                                border-top-color: white;
+                                border-radius: 50%;
+                                animation: spin 0.8s linear infinite;
+                                margin: 0 auto 15px;
+                            "></div>
+                            <p style="font-size: 1.1rem; margin: 0;">Chargement...</p>
+                        </div>
+                    `;
                 }
                 
                 try {
@@ -2832,6 +2849,13 @@ function initializeHeyzineGallery() {
                     // Vérifier que le flipbook viewer est disponible
                     if (!window.flipbookViewer) {
                         console.error('Flipbook viewer non disponible');
+                        // Recharger le script si nécessaire
+                        if (overlay) {
+                            overlay.innerHTML = `
+                                <span class="view-magazine-icon">📖</span>
+                                <span class="view-magazine-text">Feuilleter le magazine</span>
+                            `;
+                        }
                         alert('Le visualiseur de magazine n\'est pas disponible. Veuillez recharger la page.');
                         return;
                     }
@@ -2841,6 +2865,14 @@ function initializeHeyzineGallery() {
                     console.log('✅ Flipbook ouvert avec succès');
                 } catch (error) {
                     console.error('Erreur lors du chargement du PDF:', error);
+                    
+                    // Restaurer l'overlay
+                    if (overlay) {
+                        overlay.innerHTML = `
+                            <span class="view-magazine-icon">📖</span>
+                            <span class="view-magazine-text">Feuilleter le magazine</span>
+                        `;
+                    }
                     
                     // Afficher un message d'erreur à l'utilisateur
                     const errorModal = document.createElement('div');
@@ -2877,7 +2909,8 @@ function initializeHeyzineGallery() {
                             cursor: pointer;
                             font-weight: 600;
                             font-size: 1rem;
-                        ">Fermer</button>
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Fermer</button>
                     `;
                     document.body.appendChild(errorModal);
                 }
@@ -2894,28 +2927,37 @@ function initializeHeyzineGallery() {
                 overlay.addEventListener('click', openMagazine);
             }
             
-            // Gérer le survol pour afficher l'overlay
+            // Gérer le survol pour afficher l'overlay avec animation
             galleryImage.addEventListener('mouseenter', () => {
                 if (overlay) {
                     overlay.style.opacity = '1';
+                    overlay.style.transform = 'scale(1.02)';
                 }
             });
             
             galleryImage.addEventListener('mouseleave', () => {
                 if (overlay) {
                     overlay.style.opacity = '0';
+                    overlay.style.transform = 'scale(1)';
                 }
             });
         }
         
-        // Ajouter aussi un bouton dans la section info
+        // Ajouter aussi un bouton dans la section info (après avoir obtenu l'URL absolue)
         const infoSection = item.querySelector('.gallery-info');
         if (infoSection && !infoSection.querySelector('.btn-view-magazine')) {
-            const button = window.heyzineService.createViewButton(
-                absolutePdfUrl,
-                'Feuilleter le magazine'
-            );
-            infoSection.appendChild(button);
+            try {
+                const absolutePdfUrl = await getAbsoluteUrl(pdfUrl);
+                if (window.heyzineService && window.heyzineService.createViewButton) {
+                    const button = window.heyzineService.createViewButton(
+                        absolutePdfUrl,
+                        'Feuilleter le magazine'
+                    );
+                    infoSection.appendChild(button);
+                }
+            } catch (error) {
+                console.error('Erreur lors de la création du bouton:', error);
+            }
         }
     });
 }
@@ -2955,7 +2997,7 @@ function showLegalSection(type) {
             <h3>Article 1 - Objet</h3>
             <p>Les présentes conditions générales de vente s'appliquent aux services de création de magazines personnalisés.</p>
             <h3>Article 2 - Tarifs</h3>
-            <p>Le prix d'un magazine personnalisé est de <strong>25 000 FCFA</strong> pour 24 pages (hors livraison).</p>
+            <p>Le prix d'un magazine personnalisé est de <strong>30 000 FCFA</strong> pour 24 pages (hors livraison).</p>
             <h3>Article 3 - Délais</h3>
             <p>Les commandes doivent être passées 1 à 2 semaines avant la date de livraison souhaitée.</p>
             <h3>Article 4 - Processus de commande</h3>

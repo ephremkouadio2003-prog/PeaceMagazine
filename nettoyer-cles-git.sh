@@ -102,3 +102,8 @@ echo "   git push --force --tags origin"
 echo ""
 echo "⚠️  ATTENTION : Le force push réécrira l'historique sur GitHub"
 echo "   Tous les collaborateurs devront réinitialiser leur copie locale"
+
+
+
+
+

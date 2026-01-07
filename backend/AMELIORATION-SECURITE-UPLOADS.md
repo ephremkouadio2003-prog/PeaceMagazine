@@ -178,3 +178,8 @@ Si le frontend utilise directement `/uploads/`, mettre à jour vers `/api/files/
 
 
 
+
+
+
+
+

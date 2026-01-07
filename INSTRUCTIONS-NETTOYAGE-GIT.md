@@ -96,3 +96,8 @@ Les clés ont été remplacées dans :
 - ✅ `backend/services/supabaseService.js` - Service Supabase backend
 - ✅ `backend/create-env.sh` - Script de création .env
 - ✅ Tous les fichiers de documentation (.md)
+
+
+
+
+

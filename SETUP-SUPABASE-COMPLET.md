@@ -119,3 +119,8 @@ Une fois les tables créées dans Supabase, votre site fonctionne **100% avec Su
 
 
 
+
+
+
+
+

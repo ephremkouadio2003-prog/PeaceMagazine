@@ -114,3 +114,8 @@ curl -X POST http://localhost:3000/api/files/upload \
 3. Vérifier que la photo apparaît dans Supabase (table `files`)
 4. Vérifier que la commande peut être créée avec les photos
 
+
+
+
+
+

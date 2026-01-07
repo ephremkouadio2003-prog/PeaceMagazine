@@ -90,3 +90,8 @@ R : La version LTS (Long Term Support) est la meilleure pour la stabilité.
 
 
 
+
+
+
+
+
