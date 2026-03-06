@@ -1081,8 +1081,8 @@ class OrderForm {
         const missing = Math.max(0, this.minPhotosRequired - count);
         const statusClass = missing === 0 ? 'valid' : 'invalid';
         const statusText = missing === 0
-            ? '✓ Prêt pour l\'étape suivante'
-            : `⚠️ Ajoutez encore ${missing} photo${missing > 1 ? 's' : ''}`;
+            ? '<i class="fas fa-check" aria-hidden="true"></i> Prêt pour l\'étape suivante'
+            : `<i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Ajoutez encore ${missing} photo${missing > 1 ? 's' : ''}`;
 
         counterEl.innerHTML = `
             <div class="counter-info">
@@ -1434,7 +1434,7 @@ class OrderForm {
             ? 'À définir après réception des photos'
             : (selectedCover ? this.outputText(selectedCover.name) : 'Non sélectionnée');
         const photoCountBadge = photoMode === 'upload'
-            ? `${this.uploadedFiles.length} ${this.uploadedFiles.length >= this.minPhotosRequired ? '✓' : '⚠️'}`
+            ? `${this.uploadedFiles.length} ${this.uploadedFiles.length >= this.minPhotosRequired ? '<i class="fas fa-check" aria-hidden="true"></i>' : '<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>'}`
             : 'À réception';
 
         summaryPhotos.innerHTML = `
@@ -1468,7 +1468,7 @@ class OrderForm {
             <p><strong>Adresse :</strong> ${this.outputText(this.state.deliveryAddress) || 'Non renseignée'}</p>
             <p><strong>Téléphone :</strong> ${this.outputText(this.state.deliveryPhone) || 'Non renseigné'}</p>
             <p><strong>Méthode de paiement :</strong> ${paymentLabels[this.state.paymentMethod] || 'Non sélectionnée'}</p>
-            <p><strong>Conditions acceptées :</strong> ${this.state.acceptTerms ? 'Oui ✓' : 'Non ⚠️'}</p>
+            <p><strong>Conditions acceptées :</strong> ${this.state.acceptTerms ? 'Oui <i class="fas fa-check" aria-hidden="true"></i>' : 'Non <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>'}</p>
         `;
     }
 
@@ -1689,10 +1689,10 @@ class OrderForm {
                  <div class="recovery-benefits">
                      <p><strong>Pourquoi continuer ?</strong></p>
                      <ul>
-                         <li>✓ Devis personnalisé gratuit</li>
-                         <li>✓ Aperçu de votre magazine</li>
-                         <li>✓ Accompagnement personnalisé</li>
-                         <li>✓ Livraison sécurisée</li>
+                         <li><i class="fas fa-check" aria-hidden="true"></i> Devis personnalisé gratuit</li>
+                         <li><i class="fas fa-check" aria-hidden="true"></i> Aperçu de votre magazine</li>
+                         <li><i class="fas fa-check" aria-hidden="true"></i> Accompagnement personnalisé</li>
+                         <li><i class="fas fa-check" aria-hidden="true"></i> Livraison sécurisée</li>
                      </ul>
                  </div>
              </div>
@@ -1718,16 +1718,16 @@ class OrderForm {
          modal.className = 'quick-quote-modal';
          modal.innerHTML = `
              <div class="modal-content">
-                 <h3>💬 Contactez-nous sur WhatsApp</h3>
+                 <h3><i class="fas fa-comments" aria-hidden="true"></i> Contactez-nous sur WhatsApp</h3>
                  <p>Pour une prise en charge rapide et personnalisée</p>
                  <div class="whatsapp-contact-section">
                      <div class="whatsapp-info">
-                         <h4>🚀 Pourquoi nous contacter ?</h4>
+                         <h4><i class="fas fa-rocket" aria-hidden="true"></i> Pourquoi nous contacter ?</h4>
                          <ul>
-                             <li>✓ Devis personnalisé en 5 minutes</li>
-                             <li>✓ Conseils d'expert gratuits</li>
-                             <li>✓ Réponse immédiate</li>
-                             <li>✓ Accompagnement personnalisé</li>
+                             <li><i class="fas fa-check" aria-hidden="true"></i> Devis personnalisé en 5 minutes</li>
+                             <li><i class="fas fa-check" aria-hidden="true"></i> Conseils d'expert gratuits</li>
+                             <li><i class="fas fa-check" aria-hidden="true"></i> Réponse immédiate</li>
+                             <li><i class="fas fa-check" aria-hidden="true"></i> Accompagnement personnalisé</li>
                          </ul>
                      </div>
                      <div class="whatsapp-contact">
@@ -2007,8 +2007,8 @@ class OrderForm {
         modal.innerHTML = `
             <div class="success-modal-content-fullscreen">
                 <div class="success-header">
-                    <div class="success-icon-large">✓</div>
-                    <h1>🎉 Commande créée avec succès !</h1>
+                    <div class="success-icon-large"><i class="fas fa-circle-check" aria-hidden="true"></i></div>
+                    <h1><i class="fas fa-champagne-glasses" aria-hidden="true"></i> Commande créée avec succès !</h1>
                     <div class="order-number-badge">
                         <strong>Numéro de commande :</strong> 
                         <span class="order-number-value">${this.outputText(orderNumber || orderId)}</span>
@@ -2017,7 +2017,7 @@ class OrderForm {
                 
                 <div class="success-body">
                     <div class="payment-section">
-                        <h2>💳 Finaliser votre commande</h2>
+                        <h2><i class="fas fa-credit-card" aria-hidden="true"></i> Finaliser votre commande</h2>
                         <p class="payment-description">
                             Votre commande a été enregistrée avec succès !<br>
                             Pour finaliser, effectuez le paiement de l'<strong>acompte de 15 000 FCFA</strong>.
@@ -2026,14 +2026,14 @@ class OrderForm {
                         <div class="payment-simple-box">
                             <div class="payment-amount-large">15 000 FCFA</div>
                             <p class="payment-methods-simple">
-                                📱 Wave ou 🟠 Orange Money<br>
+                                <i class="fas fa-mobile-screen-button" aria-hidden="true"></i> Wave ou <i class="fas fa-wallet" aria-hidden="true"></i> Orange Money<br>
                                 <strong>Numéro : +225 0767660476</strong>
                             </p>
                         </div>
                         
                         <div class="whatsapp-payment-section">
                             <a href="${whatsappUrl}" target="_blank" class="whatsapp-payment-button">
-                                <span class="whatsapp-icon">💬</span>
+                                <span class="whatsapp-icon"><i class="fas fa-comments" aria-hidden="true"></i></span>
                                 <span>Contacter sur WhatsApp pour le paiement</span>
                             </a>
                             <p class="whatsapp-note">
@@ -2043,12 +2043,12 @@ class OrderForm {
                         </div>
                         
                         <div class="payment-info-box">
-                            <div class="info-icon">ℹ️</div>
+                            <div class="info-icon"><i class="fas fa-circle-info" aria-hidden="true"></i></div>
                             <div class="info-content">
                                 <strong>Après le paiement :</strong><br>
-                                • Vous recevrez un email de confirmation<br>
-                                • Nous vérifierons vos informations<br>
-                                • Nous vous recontacterons dans les 24h
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i> Vous recevrez un email de confirmation<br>
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i> Nous vérifierons vos informations<br>
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i> Nous vous recontacterons dans les 24h
                             </div>
                         </div>
                     </div>
@@ -2852,7 +2852,7 @@ function initializeHeyzineGallery() {
                         // Recharger le script si nécessaire
                         if (overlay) {
                             overlay.innerHTML = `
-                                <span class="view-magazine-icon">📖</span>
+                                <i class="fas fa-book-open view-magazine-icon" aria-hidden="true"></i>
                                 <span class="view-magazine-text">Feuilleter le magazine</span>
                             `;
                         }
@@ -2869,7 +2869,7 @@ function initializeHeyzineGallery() {
                     // Restaurer l'overlay
                     if (overlay) {
                         overlay.innerHTML = `
-                            <span class="view-magazine-icon">📖</span>
+                            <i class="fas fa-book-open view-magazine-icon" aria-hidden="true"></i>
                             <span class="view-magazine-text">Feuilleter le magazine</span>
                         `;
                     }

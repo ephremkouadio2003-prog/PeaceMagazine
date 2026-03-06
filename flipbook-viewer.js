@@ -150,7 +150,7 @@ class FlipbookViewer {
                         <span>+</span>
                     </button>
                     <button class="flipbook-btn flipbook-fullscreen" aria-label="Plein écran">
-                        <span>⛶</span>
+                        <i class="fas fa-expand" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -503,7 +503,7 @@ class FlipbookViewer {
             const content = this.modal.querySelector('.flipbook-content');
             content.innerHTML = `
                 <div class="flipbook-error">
-                    <h3>❌ Erreur</h3>
+                    <h3><i class="fas fa-circle-xmark" aria-hidden="true"></i> Erreur</h3>
                     <p>${message}</p>
                     <button class="flipbook-btn" onclick="this.closest('.flipbook-modal').remove()">Fermer</button>
                 </div>

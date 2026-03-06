@@ -448,7 +448,7 @@ class HeyzineService {
     createViewButton(pdfUrl, label = 'Voir en format magazine') {
         const button = document.createElement('button');
         button.className = 'btn-view-magazine';
-        button.textContent = `📖 ${label}`;
+        button.innerHTML = `<i class="fas fa-book-open" aria-hidden="true"></i> ${label}`;
         button.style.cssText = `
             padding: 12px 24px;
             background: linear-gradient(135deg, #F5C542 0%, #FFB300 100%);
@@ -473,7 +473,7 @@ class HeyzineService {
 
         button.addEventListener('click', async () => {
             button.disabled = true;
-            button.textContent = '⏳ Conversion en cours...';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Conversion en cours...';
 
             try {
                 // Essayer d'abord la conversion via API REST
@@ -493,7 +493,7 @@ class HeyzineService {
                 this.openFullscreenViewer(directUrl);
             } finally {
                 button.disabled = false;
-                button.textContent = `📖 ${label}`;
+                button.innerHTML = `<i class="fas fa-book-open" aria-hidden="true"></i> ${label}`;
             }
         });
 
