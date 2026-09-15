@@ -1517,6 +1517,13 @@ a[href*="wa.me"]:hover {
     color: #F5C542;
 }
 
+.footer-powered {
+    margin-top: 6px !important;
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    letter-spacing: 0.5px;
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
