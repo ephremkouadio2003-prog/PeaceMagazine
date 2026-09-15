@@ -1,112 +1,51 @@
-# Peace Magazine - Site Web Premium
+# Peace Magazine
 
-## Description
-Site web premium pour la commande en ligne de magazines personnalisés de luxe. Le site permet aux clients de créer des magazines sur-mesure pour célébrer des occasions spéciales (anniversaires, mariages, hommages, naissances, réussites).
+Site vitrine de **Peace Magazine** : création de magazines personnalisés de luxe (anniversaires, mariages, hommages, naissances, réussites).
 
-## Fonctionnalités
+🌐 **Site en ligne :** [peacemagazine.shop](https://peacemagazine.shop) (hébergé sur GitHub Pages)
 
-### 🎨 Design Premium
-- Palette de couleurs dorées (or doux, miel, ambre, sable clair)
-- Typographies chic (Playfair Display pour les titres, Inter pour les textes)
-- Micro-animations subtiles et effets hover élégants
-- Design responsive et accessible
+## Fonctionnement
 
-### 📋 Formulaire de Commande Multi-étapes
-1. **Informations principales** - Personne célébrée, occasion, anecdotes
-2. **Photos & couverture** - Upload de 30+ photos, sélection de couverture
-3. **Style & directives** - Couleurs, style souhaité, informations supplémentaires
-4. **Livraison & planning** - Date, adresse, conditions
-5. **Récapitulatif & paiement** - Validation finale et confirmation
+Le site est **100 % statique** : aucune base de données ni serveur nécessaire.
 
-### 🛠️ Fonctionnalités Techniques
-- Upload de fichiers avec drag & drop
-- Validation en temps réel
-- Sauvegarde automatique du formulaire
-- Navigation fluide entre les étapes
-- Animations au scroll
-- Menu mobile responsive
+- **Commandes et contact** : via WhatsApp (+225 07 67 66 04 76)
+- **Galerie** : les magazines s'ouvrent dans un lecteur "flipbook" (PDF.js chargé depuis un CDN)
+- **Vidéos** : lecture au clic dans la section Vidéos
 
-### 📱 Sections du Site
-- **Accueil** - Hero section avec CTA
-- **Comment ça marche** - 4 étapes du processus
-- **Formulaire de commande** - Processus complet en 5 étapes
-- **Galerie** - Exemples de créations
-- **FAQ** - Questions fréquentes
-- **Contact** - WhatsApp et formulaire de contact
-- **Footer** - Informations légales et liens
+## Structure
 
-## Structure des Fichiers
 ```
-Peace magazine/
-├── index.html          # Page principale
-├── styles.css          # Styles CSS
-├── script.js           # JavaScript fonctionnel
-└── README.md           # Documentation
+├── index.html            # Page unique du site
+├── styles.css            # Styles
+├── script.js             # Interactions (menu, FAQ, galerie, contact WhatsApp…)
+├── flipbook-viewer.js    # Lecteur PDF plein écran (PDF.js)
+├── robots.txt            # SEO
+├── sitemap.xml           # SEO
+├── CNAME                 # Domaine GitHub Pages (peacemagazine.shop)
+└── assets/
+    ├── images/           # Logo, couvertures, photos d'équipe
+    ├── PDF/              # Magazines feuilletables de la galerie
+    ├── videos/           # Vidéos de réalisation
+    └── icons/            # Favicon
 ```
 
-## Technologies Utilisées
-- **HTML5** - Structure sémantique
-- **CSS3** - Styles modernes avec variables CSS
-- **JavaScript ES6+** - Fonctionnalités interactives
-- **Google Fonts** - Typographies premium
-- **Schema.org** - Données structurées pour le SEO
+Le dossier `backend/` (présent en local uniquement) contient un ancien prototype Node.js/Supabase **non déployé et non utilisé par le site**. Il est ignoré par git.
 
-## Optimisations
+## Développement local
 
-### 🚀 Performance
-- Preconnect pour les polices Google
-- CSS optimisé avec variables
-- JavaScript modulaire et efficace
-- Images optimisées (lazy loading prêt)
+```bash
+npm run start     # sert le site sur http://localhost:8080 (python3 requis)
+```
 
-### 🔍 SEO
-- Meta tags optimisés
-- Open Graph et Twitter Cards
-- Schema.org markup
-- URLs canoniques
-- Mots-clés pertinents
+Ou simplement ouvrir `index.html` dans un navigateur (le flipbook nécessite toutefois un serveur local).
 
-### ♿ Accessibilité
-- Contrastes AA conformes
-- Navigation au clavier
-- Textes alternatifs
-- Focus visible
-- Support des lecteurs d'écran
+## Déploiement
 
-## Utilisation
+Chaque `git push` sur la branche `main` déploie automatiquement le site via GitHub Pages.
 
-### Installation
-1. Téléchargez tous les fichiers
-2. Ouvrez `index.html` dans un navigateur web
-3. Le site est prêt à utiliser !
+## Informations commerciales
 
-### Personnalisation
-- **Couleurs** : Modifiez les variables CSS dans `:root`
-- **Contenu** : Éditez le HTML directement
-- **Fonctionnalités** : Ajoutez du JavaScript dans `script.js`
-
-## Tarifs et Informations
-- **Prix** : 25 000 FCFA pour 24 pages
-- **Délais** : Commander 1-2 semaines avant
-- **Livraison** : À la charge du client
-- **Contact** : WhatsApp 07 67 66 04 76
-
-## Navigateurs Supportés
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## Responsive Design
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
-
-## Licence
-© 2024 Peace Magazine. Tous droits réservés.
-
----
-
-*Site créé avec amour pour célébrer ceux qui comptent* ❤️
-
-# PeaceMagazine
+- **Prix** : 30 000 FCFA pour 24 pages (hors livraison)
+- **Délais** : commander 1 à 2 semaines avant la date souhaitée
+- **Contact** : WhatsApp +225 07 67 66 04 76 · morak6@icloud.com
+- **TikTok** : [@peacemagazine_](https://www.tiktok.com/@peacemagazine_)

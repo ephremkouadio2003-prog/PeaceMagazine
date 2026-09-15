@@ -73,3 +73,6 @@ backend/uploads/
 uploads/
 .DS_Store
 clean-repo/
+
+# Backend non deploye (conserve en local uniquement)
+backend/

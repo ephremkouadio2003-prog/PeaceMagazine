@@ -11,15 +11,17 @@
     <meta property="og:title" content="Peace Magazine — Magazine personnalisé de luxe">
     <meta property="og:description" content="Offrez un magazine unique et haut de gamme : anecdotes, photos (min. 30), témoignages et couverture personnalisée. 24 pages — 30 000 FCFA.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://peacemagazine.ci">
-    <meta property="og:image" content="https://peacemagazine.ci/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://peacemagazine.shop">
+    <meta property="og:image" content="https://peacemagazine.shop/assets/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Peace Magazine — Magazine personnalisé de luxe">
     <meta name="twitter:description" content="Offrez un magazine unique et haut de gamme : anecdotes, photos (min. 30), témoignages et couverture personnalisée. 24 pages — 30 000 FCFA.">
-    <meta name="twitter:image" content="https://peacemagazine.ci/assets/images/twitter-image.jpg">
-    <link rel="canonical" href="https://peacemagazine.ci">
+    <meta name="twitter:image" content="https://peacemagazine.shop/assets/images/twitter-image.jpg">
+    <link rel="canonical" href="https://peacemagazine.shop">
+    <meta name="theme-color" content="#F5C542">
+    <meta property="og:locale" content="fr_FR">
     <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,8 +34,8 @@
         "@type": "Organization",
         "name": "Peace Magazine",
         "description": "Magazines personnalisés de luxe pour célébrer ceux qui comptent",
-        "url": "https://peacemagazine.ci",
-        "logo": "https://peacemagazine.ci/assets/images/Logo_peace_magazine.png",
+        "url": "https://peacemagazine.shop",
+        "logo": "https://peacemagazine.shop/assets/images/Logo_peace_magazine.png",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+225-07-67-66-04-76",
@@ -46,7 +48,53 @@
             "addressLocality": "Abidjan"
         },
         "sameAs": [
-            "https://wa.me/2250767660476"
+            "https://wa.me/2250767660476",
+            "https://www.tiktok.com/@peacemagazine_"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Magazine personnalisé 24 pages",
+        "description": "Magazine premium personnalisé de 24 pages : anecdotes, photos retouchées, témoignages et couverture sur-mesure.",
+        "image": "https://peacemagazine.shop/assets/images/og-image.jpg",
+        "brand": { "@type": "Brand", "name": "Peace Magazine" },
+        "offers": {
+            "@type": "Offer",
+            "price": "30000",
+            "priceCurrency": "XOF",
+            "availability": "https://schema.org/InStock",
+            "url": "https://peacemagazine.shop/#commander"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Combien de photos faut-il ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Minimum 30 photos en format PNG ou JPEG. Plus vous en fournissez, plus nous avons de choix pour créer un magazine riche et varié." }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels sont les délais ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Commander 1 à 2 semaines avant la date souhaitée. Cela nous permet de créer un magazine de qualité et de vous faire valider l'aperçu." }
+            },
+            {
+                "@type": "Question",
+                "name": "Quel est le tarif ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "30 000 FCFA pour un magazine de 24 pages. Pour des demandes spéciales (pages supplémentaires, finitions premium), contactez-nous sur WhatsApp." }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment fonctionne la livraison ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "La livraison est à la charge du client. Le coût est calculé selon l'adresse fournie et vous sera confirmé après validation de votre commande." }
+            }
         ]
     }
     </script>
@@ -96,7 +144,7 @@
             <div class="hero-visual">
                 <div class="magazine-mockup">
                     <div class="magazine-cover">
-                        <img src="./assets/images/VOTRE%20MAGAZINE.png" alt="Votre Magazine Personnalisé" class="cover-image">
+                        <img src="./assets/images/VOTRE%20MAGAZINE.png" alt="Votre Magazine Personnalisé" class="cover-image" fetchpriority="high">
                         <div class="cover-title">Votre Magazine</div>
                     </div>
                 </div>
@@ -155,14 +203,14 @@
                 </div>
                 <div class="gallery-item" data-pdf-url="./assets/PDF/weeding-magazine-personnalise.pdf">
                     <div class="gallery-image">
-                        <img src="./assets/images/weeding-magazine-personnalise.png" alt="Weeding MAGAZINE PERSONNALISÉ - magazine personnalisé" class="gallery-magazine" loading="lazy">
+                        <img src="./assets/images/weeding-magazine-personnalise.png" alt="Magazine de mariage personnalisé" class="gallery-magazine" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-book-open view-magazine-icon" aria-hidden="true"></i>
                             <span class="view-magazine-text">Feuilleter le magazine</span>
                         </div>
                     </div>
                     <div class="gallery-info">
-                        <h3>Weeding MAGAZINE PERSONNALISÉ</h3>
+                        <h3>Magazine de Mariage Personnalisé</h3>
                         <p><strong>Style :</strong> Mariage</p>
                         <p><strong>Palette :</strong> Personnalisable</p>
                         <p><strong>Pages :</strong> 24 pages</p>
@@ -541,187 +589,6 @@
         </div>
     </section>
 
-    <!-- Ancien formulaire supprimé - Code conservé pour référence -->
-    <!--
-    <section id="commander" class="order-form">
-        <div class="container">
-            <h2 class="section-title">Commander votre magazine</h2>
-            
-            <form id="orderForm" class="multi-step-form">
-                <!-- Étape 2 - Style & directives -->
-                <div class="form-step" data-step="2">
-                    <h3>Style & directives</h3>
-                    
-                    <div class="form-group">
-                        <label for="colors">Couleurs souhaitées</label>
-                        <div class="color-picker-container">
-                            <div class="color-picker-trigger" id="colorPickerTrigger">
-                                <div class="color-preview-circle" id="colorPreview"></div>
-                                <span class="color-picker-label">Cliquez pour choisir une couleur</span>
-                            </div>
-                            <div class="color-picker-dropdown" id="colorPickerDropdown" style="display: none;">
-                                <div class="color-picker-header">
-                                    <h4>Sélectionnez une couleur</h4>
-                                    <button class="close-color-picker" id="closeColorPicker">&times;</button>
-                                </div>
-                                <div class="color-picker-options">
-                                    <div class="color-option" data-color="gold" data-hex="#F5C542" style="background: #F5C542;" title="Or doux (#F5C542)"></div>
-                                    <div class="color-option" data-color="honey" data-hex="#FFB300" style="background: #FFB300;" title="Miel (#FFB300)"></div>
-                                    <div class="color-option" data-color="amber" data-hex="#FF8F00" style="background: #FF8F00;" title="Ambre (#FF8F00)"></div>
-                                    <div class="color-option" data-color="sand" data-hex="#FFF3E0" style="background: #FFF3E0;" title="Sable clair (#FFF3E0)"></div>
-                                    <div class="color-option" data-color="rose" data-hex="#FF6B9D" style="background: #FF6B9D;" title="Rose (#FF6B9D)"></div>
-                                    <div class="color-option" data-color="bleu" data-hex="#4A90E2" style="background: #4A90E2;" title="Bleu (#4A90E2)"></div>
-                                    <div class="color-option" data-color="vert" data-hex="#50C878" style="background: #50C878;" title="Vert (#50C878)"></div>
-                                    <div class="color-option" data-color="violet" data-hex="#9B59B6" style="background: #9B59B6;" title="Violet (#9B59B6)"></div>
-                                </div>
-                                <div class="color-custom-input">
-                                    <label for="customColorHex">Ou entrez un code couleur (ex: #123456)</label>
-                                    <div class="color-input-group">
-                                        <input type="text" id="customColorHex" name="customColorHex" placeholder="#F5C542" maxlength="7" pattern="#[0-9A-Fa-f]{6}">
-                                        <button type="button" class="btn-apply-color" id="applyCustomColor">Appliquer</button>
-                                    </div>
-                                    <div class="color-preview-box" id="customColorPreview"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" id="selectedColorValue" name="selectedColorValue">
-                        <input type="text" id="customColors" name="customColors" placeholder="Description des couleurs (optionnel)" style="margin-top: 10px;">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="style">Style/design souhaité</label>
-                        <select id="style" name="style">
-                            <option value="">Sélectionnez un style</option>
-                            <option value="chic">Chic et élégant</option>
-                            <option value="fun">Fun et coloré</option>
-                            <option value="sobre">Sobre et classique</option>
-                            <option value="thematique">Thématique</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="additionalInfo">Autres informations</label>
-                        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Inspirations, thèmes, mots à éviter, etc."></textarea>
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="button" class="btn-secondary prev-step">Précédent</button>
-                        <button type="button" class="btn-primary next-step">Suivant</button>
-                    </div>
-                </div>
-
-                <!-- Étape 3 - Livraison & planning -->
-                <div class="form-step" data-step="3">
-                    <h3>Livraison & planning</h3>
-                    
-                    <div class="form-group">
-                        <label for="deliveryDate">Date de livraison souhaitée *</label>
-                        <input type="date" id="deliveryDate" name="deliveryDate" required>
-                        <p class="help-text">Merci de commander 1 à 2 semaines avant la date de livraison souhaitée.</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deliveryAddress">Lieu de livraison *</label>
-                        <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required placeholder="Adresse complète"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deliveryPhone">Téléphone de contact *</label>
-                        <input type="tel" id="deliveryPhone" name="deliveryPhone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-                                J'ai lu et j'accepte les conditions (prix, délais, livraison). *
-                            </label>
-                        </div>
-                        <div class="terms-info">
-                            <p><strong>Le prix de 30 000 FCFA concerne un magazine de 24 pages.</strong> Toute demande spécifique (pages supplémentaires, finitions premium, urgences) fera l'objet d'un devis.</p>
-                            <p><strong>La livraison est à la charge du client</strong> (calculée selon l'adresse fournie).</p>
-                        </div>
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="button" class="btn-secondary prev-step">Précédent</button>
-                        <button type="button" class="btn-primary next-step">Suivant</button>
-                    </div>
-                </div>
-
-                <!-- Étape 4 - Récapitulatif & paiement -->
-                <div class="form-step" data-step="4">
-                    <h3>Récapitulatif & paiement</h3>
-                    
-                    <div class="summary-container">
-                        <div class="summary-section">
-                            <h4>Informations</h4>
-                            <div id="summary-info"></div>
-                        </div>
-                        
-                        <div class="summary-section">
-                            <h4>Photos</h4>
-                            <div id="summary-photos"></div>
-                        </div>
-                        
-                        <div class="summary-section">
-                            <h4>Livraison</h4>
-                            <div id="summary-delivery"></div>
-                        </div>
-                        
-                        <div class="summary-section">
-                            <h4>Prix & Paiement</h4>
-                            <div class="price-info">
-                                <p><strong>24 pages — 30 000 FCFA</strong></p>
-                                <p>Livraison à la charge du client</p>
-                                
-                                <div class="payment-options">
-                                    <h5>Options de paiement :</h5>
-                                    <div class="payment-method">
-                                        <input type="radio" id="payment-whatsapp" name="paymentMethod" value="whatsapp" checked>
-                                        <label for="payment-whatsapp">
-                                            <strong>Paiement via WhatsApp</strong>
-                                            <span>Contactez-nous pour finaliser votre commande et organiser le paiement</span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="payment-method">
-                                        <input type="radio" id="payment-bank" name="paymentMethod" value="bank">
-                                        <label for="payment-bank">
-                                            <strong>Virement bancaire</strong>
-                                            <span>Coordonnées bancaires fournies après validation de la commande</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="payment-instructions">
-                                    <h5>Instructions :</h5>
-                                    <ol>
-                                        <li>Confirmez votre commande ci-dessous</li>
-                                        <li>Vous serez redirigé vers le paiement de l'acompte (15 000 FCFA)</li>
-                                        <li>Après paiement, nous vous contacterons dans les 24h pour valider les détails</li>
-                                        <li>Un aperçu vous sera envoyé pour validation finale</li>
-                                        <li>Le solde restant (10 000 FCFA) sera réglé avant la livraison</li>
-                                        <li>Votre magazine sera livré dans les délais convenus</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="special-order-info">
-                        <p><strong>Pour une commande spéciale</strong> (format/page/finition/quantité), contactez Peace Magazine sur WhatsApp : <a href="https://wa.me/2250767660476" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir WhatsApp pour contacter Peace Magazine (ouvre dans un nouvel onglet)">+225 07 67 66 04 76 <span class="sr-only">(ouvre dans un nouvel onglet)</span></a></p>
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="button" class="btn-secondary prev-step">Précédent</button>
-                        <button type="submit" class="btn-primary">Confirmer ma commande</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-    -->
 
     <!-- FAQ -->
     <section id="faq" class="faq">
@@ -873,7 +740,12 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Peace Magazine. Tous droits réservés.</p>
+                <p>&copy; <span id="footerYear">2026</span> Peace Magazine. Tous droits réservés.</p>
+                <p class="footer-legal">
+                    <a href="#" class="footer-link" onclick="showLegalSection('mentions'); return false;">Mentions légales</a>
+                    &nbsp;·&nbsp;
+                    <a href="#" class="footer-link" onclick="showLegalSection('cgv'); return false;">Conditions générales de vente</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -891,93 +763,7 @@
         </div>
     </div>
 
-    <!-- Configuration -->
-    <script>
-        (function configureApp() {
-            const isLocalHost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-            // En production, appeler explicitement l'API Node
-            const productionBackendUrl = window.BACKEND_URL || 'https://api.peacemagazine.ci';
-            
-            // URL de base pour les PDFs (pour Heyzine qui nécessite des URLs publiques)
-            // En local, utiliser l'IP locale si disponible, sinon localhost (ne fonctionnera pas avec Heyzine)
-            // Pour le développement avec Heyzine, utiliser ngrok : window.PDF_BASE_URL = 'https://votre-tunnel.ngrok.io';
-            let pdfBaseUrl = window.PDF_BASE_URL || window.location.origin;
-            
-            window.APP_CONFIG = {
-                apiBaseUrl: isLocalHost ? 'http://localhost:3000' : productionBackendUrl,
-                uploadBaseUrl: isLocalHost ? 'http://localhost:3000' : productionBackendUrl,
-                pdfBaseUrl: pdfBaseUrl, // URL de base pour les PDFs (doit être publique pour Heyzine)
-                isLocal: isLocalHost,
-                // Configuration Supabase
-                supabaseUrl: 'https://chxhkoeqwssrczfviar.supabase.co',
-                supabaseKey: 'VOTRE_CLE_SUPABASE_ANON_KEY_ICI', // ⚠️ Remplacez par votre clé publique Supabase (anon key)
-                useSupabase: true // Activer Supabase pour la persistance
-            };
-            console.log('API Base URL:', window.APP_CONFIG.apiBaseUrl);
-            console.log('Supabase activé:', window.APP_CONFIG.useSupabase);
-        })();
-    </script>
-    
-    <script src="supabase-service.js"></script>
-    <script src="heyzine-service.js"></script>
     <script src="flipbook-viewer.js"></script>
     <script src="script.js"></script>
-    
-    <!-- Script pour la navbar rétractable -->
-    <script>
-        (function() {
-            const navbar = document.querySelector('.navbar');
-            let lastScrollTop = 0;
-            let scrollTimeout;
-            
-            // Fonction pour gérer le scroll
-            function handleScroll() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Ajouter la classe "scrolled" si on a scrollé
-                if (scrollTop > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                // Rétracter la navbar quand on scroll vers le bas
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Scroll vers le bas - cacher la navbar
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    // Scroll vers le haut - afficher la navbar
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollTop = scrollTop;
-                
-                // Clear le timeout précédent
-                clearTimeout(scrollTimeout);
-                
-                // Après 150ms sans scroll, s'assurer que la navbar est visible
-                scrollTimeout = setTimeout(() => {
-                    if (scrollTop < 100) {
-                        navbar.style.transform = 'translateY(0)';
-                    }
-                }, 150);
-            }
-            
-            // Écouter l'événement scroll avec throttling
-            let ticking = false;
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        handleScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
-            
-            // Initialiser l'état au chargement
-            handleScroll();
-        })();
-    </script>
 </body>
 </html>
