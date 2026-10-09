@@ -226,75 +226,6 @@ function initializeMobileMenu() {
     });
 }
 
-// ===== Galerie : feuilletage des magazines (PDF.js) =====
-function getAbsolutePdfUrl(relativePath) {
-    if (/^https?:\/\//.test(relativePath)) {
-        return relativePath;
-    }
-    let path = relativePath.startsWith('./') ? relativePath.substring(2) : relativePath;
-    try {
-        path = decodeURIComponent(path);
-    } catch (e) {
-        // Chemin non encodé : on continue tel quel
-    }
-    const encoded = path.split('/').filter(Boolean).map(encodeURIComponent).join('/');
-    return `${window.location.origin}/${encoded}`;
-}
-
-function initializeGalleryFlipbooks() {
-    document.querySelectorAll('.gallery-item[data-pdf-url]').forEach((item) => {
-        const pdfUrl = item.getAttribute('data-pdf-url');
-        const galleryImage = item.querySelector('.gallery-image');
-        if (!pdfUrl || !galleryImage) {
-            return;
-        }
-
-        galleryImage.style.cursor = 'pointer';
-        const overlay = item.querySelector('.gallery-overlay');
-
-        const openMagazine = async (e) => {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-
-            if (overlay) {
-                overlay.classList.add('loading');
-                overlay.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span><p>Chargement…</p>';
-            }
-
-            const restoreOverlay = () => {
-                if (overlay) {
-                    overlay.classList.remove('loading');
-                    overlay.innerHTML = '<i class="fas fa-book-open view-magazine-icon" aria-hidden="true"></i>' +
-                        '<span class="view-magazine-text">Feuilleter le magazine</span>';
-                }
-            };
-
-            try {
-                const absolutePdfUrl = getAbsolutePdfUrl(pdfUrl);
-                const galleryInfo = item.querySelector('.gallery-info h3');
-                const magazineTitle = galleryInfo ? galleryInfo.textContent : 'Magazine';
-
-                if (!window.flipbookViewer) {
-                    throw new Error('Le visualiseur de magazine n\'est pas disponible. Veuillez recharger la page.');
-                }
-                await window.flipbookViewer.loadPDF(absolutePdfUrl, magazineTitle);
-                restoreOverlay();
-            } catch (error) {
-                console.error('Erreur lors du chargement du PDF:', error);
-                restoreOverlay();
-                alert('Impossible de charger le magazine. Vérifiez votre connexion Internet et réessayez.');
-            }
-        };
-
-        galleryImage.addEventListener('click', openMagazine);
-        if (overlay) {
-            overlay.addEventListener('click', openMagazine);
-        }
-    });
-}
-
 // ===== Mentions légales / CGV (modale) =====
 function showLegalSection(type) {
     const modal = document.getElementById('legal-modal');
@@ -374,37 +305,69 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// ===== Couvertures vidéo (lecture au clic) =====
+// ===== Vidéos : galerie en accordéon =====
 function initializeVideoCovers() {
-    document.querySelectorAll('.video-item').forEach(item => {
-        const videoCover = item.querySelector('.video-cover');
-        const video = item.querySelector('video');
-        if (!videoCover || !video) {
+    const panels = Array.from(document.querySelectorAll('.media-panel'));
+    if (!panels.length) {
+        return;
+    }
+
+    const play = (panel) => {
+        const video = panel.querySelector('video');
+        if (!video) {
             return;
         }
+        // Une seule vidéo à la fois : on remet les autres au repos.
+        panels.forEach(other => {
+            if (other === panel) {
+                return;
+            }
+            const v = other.querySelector('video');
+            if (v && !v.paused) {
+                v.pause();
+            }
+            other.classList.remove('is-playing');
+        });
 
-        videoCover.addEventListener('click', () => {
-            videoCover.classList.add('hidden');
-            video.classList.remove('hidden');
-            video.play().catch(err => {
-                console.error('Erreur lors de la lecture de la vidéo:', err);
-                videoCover.classList.remove('hidden');
-                video.classList.add('hidden');
+        panel.classList.add('is-playing');
+        // Le panneau survolé est déjà large ; sur mobile (sans survol) il faut
+        // l'ouvrir explicitement pour que la vidéo soit visible.
+        panels.forEach(other => other.classList.toggle('is-open', other === panel));
+
+        video.play().catch(() => {
+            panel.classList.remove('is-playing');
+        });
+    };
+
+    panels.forEach(panel => {
+        const video = panel.querySelector('video');
+
+        panel.addEventListener('click', (event) => {
+            // Les contrôles natifs de la vidéo gardent la main une fois lancée.
+            if (event.target.closest('video') && panel.classList.contains('is-playing')) {
+                return;
+            }
+            play(panel);
+        });
+
+        panel.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                play(panel);
+            }
+        });
+
+        if (video) {
+            video.addEventListener('ended', () => {
+                panel.classList.remove('is-playing');
+                video.currentTime = 0;
             });
-        });
-
-        video.addEventListener('play', () => {
-            videoCover.classList.add('hidden');
-            video.classList.remove('hidden');
-        });
-
-        video.addEventListener('ended', () => {
-            videoCover.classList.remove('hidden');
-            video.classList.add('hidden');
-            video.currentTime = 0;
-        });
-
-        video.classList.add('hidden');
+            video.addEventListener('pause', () => {
+                if (video.currentTime === 0) {
+                    panel.classList.remove('is-playing');
+                }
+            });
+        }
     });
 }
 
@@ -422,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new FAQ();
     new ContactForm();
     new ScrollAnimations();
-    initializeGalleryFlipbooks();
     initializeMobileMenu();
     initializeNavbarScroll();
     updateFooterYear();

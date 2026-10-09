@@ -76,3 +76,20 @@ clean-repo/
 
 # Backend non deploye (conserve en local uniquement)
 backend/
+
+# Fichiers sources lourds : conservés en local, le site utilise les versions
+# optimisées de assets/images/opt et assets/magazines
+assets/PDF/
+assets/images/*.png
+assets/images/*.jpg
+assets/images/*.JPG
+assets/images/*.jpeg
+!assets/images/og-image.jpg
+!assets/images/twitter-image.jpg
+nouveau magazine/
+Logo Peace .pdf
+new design.jpg
+v26044*.MP4
+
+# Page de dépannage locale (ne pas déployer)
+diagnostic.html
