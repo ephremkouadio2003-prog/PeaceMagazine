@@ -192,11 +192,47 @@ function createOrder(order) {
 }
 
 /**
- * Crée la fiche de commande sous forme de Google Docs plutôt que de fichier
- * texte : c'est lisible, modifiable, annotable en commentaire, et un document
- * Google ne consomme pas le quota de stockage du Drive.
+ * Crée la fiche de commande.
+ *
+ * On préfère un Google Docs (lisible, modifiable, annotable, et sans impact
+ * sur le quota Drive). Mais DocumentApp réclame une autorisation distincte :
+ * si elle manque, on retombe sur un fichier texte. Une commande ne doit
+ * jamais être perdue pour un problème de permission.
  */
 function creerFiche(folder, orderId, now, o) {
+  try {
+    return creerFicheDocs(folder, orderId, now, o);
+  } catch (e) {
+    folder.createFile('Fiche commande.txt', ficheTexte(orderId, now, o), MimeType.PLAIN_TEXT);
+    return null;
+  }
+}
+
+/** Version texte, utilisée si l'autorisation Google Docs manque. */
+function ficheTexte(orderId, now, o) {
+  return 'PEACE MAGAZINE — COMMANDE ' + orderId + '\n' +
+    'Reçue le ' + Utilities.formatDate(now, Session.getScriptTimeZone(), 'dd/MM/yyyy à HH:mm') + '\n\n' +
+    '== CLIENT ==\n' +
+    'Nom : ' + o.clientName + '\n' +
+    'Téléphone : ' + o.clientPhone + '\n' +
+    'Email : ' + (o.clientEmail || '—') + '\n\n' +
+    '== PERSONNE CÉLÉBRÉE ==\n' +
+    'Nom : ' + o.celebratedName + '\n' +
+    'Occasion : ' + o.occasion + '\n' +
+    'Date de l\'événement : ' + (o.eventDate || '—') + '\n\n' +
+    '== HISTOIRE ET ANECDOTES ==\n' + (o.story || '—') + '\n\n' +
+    '== TÉMOIGNAGES ==\n' + (o.testimonials || '—') + '\n\n' +
+    '== STYLE ==\n' +
+    'Style : ' + (o.style || '—') + '\n' +
+    'Couleurs : ' + (o.colors || '—') + '\n' +
+    'Directives : ' + (o.styleNotes || '—') + '\n\n' +
+    '== LIVRAISON ==\n' +
+    'Date souhaitée : ' + (o.deliveryDate || '—') + '\n' +
+    'Adresse : ' + (o.deliveryAddress || '—') + '\n\n' +
+    'Photos annoncées : ' + o.photoCount + '\n';
+}
+
+function creerFicheDocs(folder, orderId, now, o) {
   var doc = DocumentApp.create('Fiche commande — ' + orderId);
   var body = doc.getBody();
   body.clear();
@@ -329,7 +365,15 @@ function finalizeOrder(payload) {
   // Les légendes et textes arrivent du formulaire : inutile de relire chaque
   // description dans Drive, ce qui serait lent pour quatre-vingts photos.
   var photos = Array.isArray(payload.photos) ? payload.photos.slice(0, MAX_PHOTOS) : [];
-  var doc = ouvrirFiche(orderId, folder);
+  var doc = null;
+  try {
+    doc = ouvrirFiche(orderId, folder);
+  } catch (e) {
+    doc = null;   // autorisation Docs absente
+  }
+  if (!doc && photos.length) {
+    ajouterPhotosAuTexte(folder, photos);
+  }
   if (doc && photos.length) {
     var body = doc.getBody();
     section(body, 'Photos, légendes et textes');
@@ -361,6 +405,28 @@ function finalizeOrder(payload) {
   updateOrderRow(orderId, { statut: statut, photosRecues: entries.length });
 
   return { photoCount: entries.length };
+}
+
+/** Ajoute la liste des photos à la fiche texte (repli sans Google Docs). */
+function ajouterPhotosAuTexte(folder, photos) {
+  var it = folder.getFilesByName('Fiche commande.txt');
+  if (!it.hasNext()) {
+    return;
+  }
+  var file = it.next();
+  var lignes = photos.map(function (p) {
+    var caption = clean(p.caption, 300);
+    var texte = clean(p.text, MAX_PHOTO_TEXT);
+    var titre = 'Photo ' + padNumber(Number(p.index) || 0) + (p.isCover ? ' — COUVERTURE' : '');
+    if (!caption && !texte) {
+      return titre + '\n    (sans texte)';
+    }
+    return titre +
+      (caption ? '\n    Légende : ' + caption : '') +
+      (texte ? '\n    ' + texte : '');
+  });
+  file.setContent(file.getBlob().getDataAsString() +
+    '\n== PHOTOS, LÉGENDES ET TEXTES ==\n\n' + lignes.join('\n\n') + '\n');
 }
 
 // ===== Outils Drive / Sheet =====

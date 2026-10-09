@@ -130,6 +130,36 @@ window.ORDER_CONFIG = {
 ⚠️ Si tu crées un *nouveau déploiement* au lieu d'une *nouvelle version*, l'URL
 change et il faut la remettre dans `index.html`.
 
+---
+
+## « Vous n'êtes pas autorisé à appeler DocumentApp.create »
+
+Cette erreur apparaît quand le script a été autorisé **avant** d'utiliser Google
+Docs. Google n'ajoute jamais une autorisation tout seul : il faut la redonner
+une fois.
+
+1. Ouvre ton projet sur [script.google.com](https://script.google.com).
+2. **Paramètres du projet** (l'engrenage à gauche) → coche
+   **« Afficher le fichier manifeste appsscript.json dans l'éditeur »**.
+3. Reviens à l'éditeur, ouvre `appsscript.json` et remplace son contenu par
+   celui de [`apps-script/appsscript.json`](apps-script/appsscript.json).
+   Enregistre.
+4. Dans la barre du haut, choisis la fonction **`doGet`** dans la liste
+   déroulante, puis clique sur **Exécuter**.
+5. Google redemande l'autorisation, cette fois avec Google Docs :
+   *Autoriser l'accès* → ton compte → **Paramètres avancés** →
+   **Accéder à … (non sécurisé)** → **Autoriser**.
+6. **Déployer → Gérer les déploiements → ✏️ → Nouvelle version → Déployer.**
+
+Vérifie ensuite en passant une commande test.
+
+> **Si tu préfères ne pas t'en occuper maintenant** : ce n'est pas bloquant.
+> Depuis la dernière version du script, une commande qui ne peut pas créer de
+> Google Docs crée un `Fiche commande.txt` à la place — avec exactement les
+> mêmes informations, photos, légendes et textes compris. **Aucune commande
+> n'est perdue.** Tu auras simplement un fichier texte au lieu d'un document
+> mis en forme, jusqu'à ce que tu donnes l'autorisation.
+
 ## Limites de Google (très larges)
 
 - ~20 000 appels par jour
