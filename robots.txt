@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Les fichiers techniques n'ont pas à être indexés
+Disallow: /apps-script/
+Disallow: /diagnostic.html
+
 Sitemap: https://peacemagazine.shop/sitemap.xml

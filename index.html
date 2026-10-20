@@ -7,50 +7,71 @@
     <meta name="description" content="Offrez un magazine unique et haut de gamme : anecdotes, photos, témoignages et couverture sur-mesure. 24 pages — 30 000 FCFA, livré à Abidjan.">
     <meta name="keywords" content="magazine personnalisé, cadeau luxe, anniversaire, mariage, hommage, naissance, réussite, magazine sur-mesure, Côte d'Ivoire, Abidjan">
     <meta name="author" content="Peace Magazine">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:title" content="Peace Magazine — Magazine personnalisé de luxe">
     <meta property="og:description" content="Offrez un magazine unique et haut de gamme : anecdotes, photos (min. 30), témoignages et couverture personnalisée. 24 pages — 30 000 FCFA.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://peacemagazine.shop">
+    <meta property="og:url" content="https://peacemagazine.shop/">
     <meta property="og:image" content="https://peacemagazine.shop/assets/images/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Peace Magazine — magazine personnalisé de luxe">
+    <meta property="og:site_name" content="Peace Magazine">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Peace Magazine — Magazine personnalisé de luxe">
     <meta name="twitter:description" content="Offrez un magazine unique et haut de gamme : anecdotes, photos (min. 30), témoignages et couverture personnalisée. 24 pages — 30 000 FCFA.">
     <meta name="twitter:image" content="https://peacemagazine.shop/assets/images/twitter-image.jpg">
-    <link rel="canonical" href="https://peacemagazine.shop">
+    <link rel="canonical" href="https://peacemagazine.shop/">
     <meta name="theme-color" content="#1A1A1A">
     <meta property="og:locale" content="fr_FR">
     <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <!-- Polices auto-hébergées : Oswald porte le titre principal, donc le
+         navigateur doit l'avoir le plus tôt possible. -->
+    <link rel="preload" href="./assets/fonts/oswald-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/inter-300-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "LocalBusiness",
+        "@id": "https://peacemagazine.shop/#entreprise",
         "name": "Peace Magazine",
-        "description": "Magazines personnalisés de luxe pour célébrer ceux qui comptent",
-        "url": "https://peacemagazine.shop",
-        "logo": "https://peacemagazine.shop/assets/images/logo-peace.png",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+225-07-67-66-04-76",
-            "contactType": "customer service",
-            "availableLanguage": "French"
-        },
+        "alternateName": "Peace Magazine Abidjan",
+        "description": "Création de magazines personnalisés de luxe à Abidjan : anniversaires, mariages, hommages, naissances et réussites. 24 pages sur-mesure, impression premium.",
+        "url": "https://peacemagazine.shop/",
+        "logo": "https://peacemagazine.shop/assets/images/opt/logo.webp",
+        "image": "https://peacemagazine.shop/assets/images/og-image.jpg",
+        "telephone": "+2250767660476",
+        "email": "morak6@icloud.com",
+        "priceRange": "30 000 FCFA",
+        "currenciesAccepted": "XOF",
+        "paymentAccepted": "Mobile money, virement bancaire, espèces",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "CI",
-            "addressLocality": "Abidjan"
+            "addressLocality": "Abidjan",
+            "addressCountry": "CI"
         },
+        "areaServed": [
+            { "@type": "City", "name": "Abidjan" },
+            { "@type": "Country", "name": "Côte d'Ivoire" }
+        ],
+        "founder": { "@type": "Person", "name": "Faveur Morak" },
+        "foundingDate": "2023",
+        "knowsLanguage": "fr",
         "sameAs": [
             "https://wa.me/2250767660476",
             "https://www.tiktok.com/@peacemagazine_",
             "https://www.instagram.com/peac.emag"
-        ]
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+2250767660476",
+            "contactType": "customer service",
+            "availableLanguage": "French",
+            "areaServed": "CI"
+        }
     }
     </script>
     <script type="application/ld+json">
@@ -58,15 +79,26 @@
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Magazine personnalisé 24 pages",
-        "description": "Magazine premium personnalisé de 24 pages : anecdotes, photos retouchées, témoignages et couverture sur-mesure.",
-        "image": "https://peacemagazine.shop/assets/images/og-image.jpg",
+        "description": "Magazine premium entièrement personnalisé : couverture sur-mesure, articles et interviews rédigés, photos retouchées, témoignages de proches. Imprimé sur papier 300 g/m² et livré prêt à offrir.",
+        "image": [
+            "https://peacemagazine.shop/assets/images/og-image.jpg",
+            "https://peacemagazine.shop/assets/images/opt/nuella.webp",
+            "https://peacemagazine.shop/assets/images/opt/mariage.webp"
+        ],
         "brand": { "@type": "Brand", "name": "Peace Magazine" },
+        "category": "Cadeau personnalisé",
+        "material": "Papier 300 g/m²",
+        "numberOfPages": 24,
         "offers": {
             "@type": "Offer",
             "price": "30000",
             "priceCurrency": "XOF",
             "availability": "https://schema.org/InStock",
-            "url": "https://peacemagazine.shop/#commander"
+            "itemCondition": "https://schema.org/NewCondition",
+            "url": "https://peacemagazine.shop/#commander",
+            "priceValidUntil": "2027-12-31",
+            "seller": { "@id": "https://peacemagazine.shop/#entreprise" },
+            "areaServed": { "@type": "Country", "name": "Côte d'Ivoire" }
         }
     }
     </script>
@@ -97,6 +129,100 @@
             }
         ]
     }
+    </script>
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Le magazine Faveur & Valérie en main",
+            "description": "Le magazine personnalisé Faveur & Valérie, imprimé et feuilleté page après page.",
+            "thumbnailUrl": "https://peacemagazine.shop/assets/videos/posters/faveur-valerie.webp",
+            "contentUrl": "https://peacemagazine.shop/assets/videos/faveur-valerie.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT42S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Peace Magazine",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://peacemagazine.shop/assets/images/opt/logo.webp"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Nos magazines au cœur des anniversaires",
+            "description": "Un décor d'anniversaire où le magazine personnalisé Peace Magazine tient la vedette.",
+            "thumbnailUrl": "https://peacemagazine.shop/assets/videos/posters/anniversaires.webp",
+            "contentUrl": "https://peacemagazine.shop/assets/videos/anniversaires.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT20S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Peace Magazine",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://peacemagazine.shop/assets/images/opt/logo.webp"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Un magazine personnalisé de A à Z",
+            "description": "La fabrication d'un magazine Peace Magazine, de la couverture aux finitions.",
+            "thumbnailUrl": "https://peacemagazine.shop/assets/videos/posters/magazine.webp",
+            "contentUrl": "https://peacemagazine.shop/assets/videos/magazine.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT18S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Peace Magazine",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://peacemagazine.shop/assets/images/opt/logo.webp"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Plusieurs numéros réalisés",
+            "description": "Un aperçu de plusieurs magazines personnalisés réalisés par Peace Magazine.",
+            "thumbnailUrl": "https://peacemagazine.shop/assets/videos/posters/magazines.webp",
+            "contentUrl": "https://peacemagazine.shop/assets/videos/magazines.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT35S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Peace Magazine",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://peacemagazine.shop/assets/images/opt/logo.webp"
+                }
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Les réactions à la découverte du magazine",
+            "description": "Les réactions de celles et ceux qui découvrent leur magazine personnalisé.",
+            "thumbnailUrl": "https://peacemagazine.shop/assets/videos/posters/reactions.webp",
+            "contentUrl": "https://peacemagazine.shop/assets/videos/reactions.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT1M16S",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Peace Magazine",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://peacemagazine.shop/assets/images/opt/logo.webp"
+                }
+            }
+        }
+    ]
     </script>
 </head>
 <body>
@@ -147,6 +273,7 @@
         </div>
     </nav>
 
+    <main id="contenu">
     <!-- Hero -->
     <header id="accueil" class="hero">
         <div class="hero-inner">
@@ -953,6 +1080,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1015,7 +1144,7 @@
             <div class="footer-bottom">
                 <p>&copy; <span id="footerYear">2026</span> Peace Magazine. Tous droits réservés.</p>
                 <p class="footer-parent">Filiale de <strong>Peace Agency</strong></p>
-                <p class="footer-powered">Propulsé par Codexworld</p>
+                <p class="footer-powered">Propulsé par <a href="https://codexworld-eosin.vercel.app" target="_blank" rel="noopener noreferrer">Codexworld</a></p>
                 <p class="footer-legal">
                     <button type="button" class="footer-link footer-legal-btn" onclick="showLegalSection('mentions')">Mentions légales</button>
                     &nbsp;·&nbsp;

@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
         <loc>https://peacemagazine.shop/</loc>
-        <lastmod>2026-09-15</lastmod>
+        <lastmod>2026-10-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
+
+        <image:image>
+            <image:loc>https://peacemagazine.shop/assets/images/opt/nuella.webp</image:loc>
+            <image:title>Magazine personnalisé Nuella</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://peacemagazine.shop/assets/images/opt/faveur-valerie.webp</image:loc>
+            <image:title>Magazine personnalisé Faveur &amp; Valérie</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://peacemagazine.shop/assets/images/opt/mariage.webp</image:loc>
+            <image:title>Magazine de mariage personnalisé</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://peacemagazine.shop/assets/images/opt/jess.webp</image:loc>
+            <image:title>Magazine personnalisé Jess</image:title>
+        </image:image>
+
+        <video:video>
+            <video:thumbnail_loc>https://peacemagazine.shop/assets/videos/posters/faveur-valerie.webp</video:thumbnail_loc>
+            <video:title>Le magazine Faveur &amp; Valérie en main</video:title>
+            <video:description>Le magazine personnalisé Faveur &amp; Valérie, imprimé et feuilleté page après page.</video:description>
+            <video:content_loc>https://peacemagazine.shop/assets/videos/faveur-valerie.mp4</video:content_loc>
+            <video:duration>42</video:duration>
+            <video:publication_date>2026-10-09</video:publication_date>
+        </video:video>
+        <video:video>
+            <video:thumbnail_loc>https://peacemagazine.shop/assets/videos/posters/reactions.webp</video:thumbnail_loc>
+            <video:title>Les réactions à la découverte du magazine</video:title>
+            <video:description>Les réactions de celles et ceux qui découvrent leur magazine personnalisé.</video:description>
+            <video:content_loc>https://peacemagazine.shop/assets/videos/reactions.mp4</video:content_loc>
+            <video:duration>76</video:duration>
+            <video:publication_date>2026-10-09</video:publication_date>
+        </video:video>
     </url>
 </urlset>

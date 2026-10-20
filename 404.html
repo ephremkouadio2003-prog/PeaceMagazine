@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable — Peace Magazine</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#1A1A1A">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .erreur {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: var(--spacing-md);
+        }
+        .erreur-code {
+            font-family: var(--font-display);
+            font-size: clamp(5rem, 22vw, 13rem);
+            font-weight: 700;
+            line-height: 0.85;
+            color: var(--gold-deep);
+        }
+        .erreur-liens { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; justify-content: center; }
+    </style>
+</head>
+<body>
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-play" viewBox="0 0 384 512"><path d="M73 39c-15-9-33-9-48-1S0 61 0 79v354c0 18 9 34 25 42s33 7 48-1l320-192c14-9 23-25 23-41s-9-32-23-41L73 39z" transform="scale(0.96)"/></symbol>
+        <symbol id="i-check" viewBox="0 0 448 512"><path d="M438 105c12 12 12 33 0 45L183 406c-12 12-33 12-45 0L10 278c-12-12-12-33 0-45s33-12 45 0l106 105L393 105c12-12 33-12 45 0z"/></symbol>
+        <symbol id="i-check-circle" viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm123 177L239 325c-9 9-24 9-33 0l-73-73c-9-9-9-24 0-33s24-9 33 0l57 56 123-123c9-9 24-9 33 0s9 24 0 33z"/></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380 97A224 224 0 0 0 26 367L0 464l100-26a224 224 0 0 0 107 27h1c123 0 224-100 224-223 0-60-23-116-65-158zM207 428c-33 0-65-9-93-26l-7-4-69 18 19-67-4-7a186 186 0 1 1 345-96c0 103-84 186-186 186zm102-139c-6-3-33-16-38-18s-9-3-13 3-14 18-18 22-7 4-13 1c-33-16-54-29-76-66-6-10 6-9 17-31 2-4 1-7 0-10s-13-32-18-43-10-10-13-10h-11c-4 0-10 1-15 7s-20 20-20 48 20 56 23 60 40 61 97 85c14 6 24 10 32 12 14 4 26 4 36 2 11-2 33-13 38-27s5-25 3-27z"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 448 512"><path d="M224 141a115 115 0 1 0 0 230 115 115 0 0 0 0-230zm0 190a75 75 0 1 1 0-150 75 75 0 0 1 0 150zm147-195a27 27 0 1 1-54 0 27 27 0 0 1 54 0zm76 27c-2-36-10-68-36-94s-58-34-94-36c-37-2-148-2-185 0-36 2-68 10-94 36s-34 58-36 94c-2 37-2 148 0 185 2 36 10 68 36 94s58 34 94 36c37 2 148 2 185 0 36-2 68-10 94-36s34-58 36-94c2-37 2-148 0-185zm-48 224c-8 19-22 34-41 42-29 11-97 9-129 9s-100 2-129-9c-19-8-33-23-41-42-11-29-9-97-9-129s-2-100 9-129c8-19 22-33 41-41 29-12 97-9 129-9s100-3 129 9c19 8 33 22 41 41 12 29 9 97 9 129s3 100-9 129z"/></symbol>
+        <symbol id="i-tiktok" viewBox="0 0 448 512"><path d="M448 210a211 211 0 0 1-124-40v178a163 163 0 1 1-141-162v90a75 75 0 1 0 53 72V0h88a122 122 0 0 0 124 122v88z"/></symbol>
+        <symbol id="i-times" viewBox="0 0 384 512"><path d="M343 107c9-9 9-24 0-34s-24-9-34 0L192 191 75 73c-9-9-24-9-34 0s-9 25 0 34l118 117L41 341c-9 9-9 24 0 34s25 9 34 0l117-118 117 118c9 9 24 9 34 0s9-25 0-34L226 224 343 107z"/></symbol>
+        <symbol id="i-print" viewBox="0 0 512 512"><path d="M128 0h256c18 0 32 14 32 32v96H96V32c0-18 14-32 32-32zM64 160h384c35 0 64 29 64 64v128c0 18-14 32-32 32h-64v-64c0-18-14-32-32-32H128c-18 0-32 14-32 32v64H32c-18 0-32-14-32-32V224c0-35 29-64 64-64zm64 192h256v128c0 18-14 32-32 32H160c-18 0-32-14-32-32V352zm288-128a24 24 0 1 0 0 48 24 24 0 0 0 0-48z"/></symbol>
+        <symbol id="i-images" viewBox="0 0 576 512"><path d="M160 32h352c35 0 64 29 64 64v224c0 35-29 64-64 64H160c-35 0-64-29-64-64V96c0-35 29-64 64-64zm96 128a48 48 0 1 0-96 0 48 48 0 0 0 96 0zm-96 160h352l-96-128-64 80-48-56-144 104zM32 128h32v256c0 53 43 96 96 96h288v32H160C72 512 0 440 0 352V160c0-18 14-32 32-32z"/></symbol>
+        <symbol id="i-expand" viewBox="0 0 448 512"><path d="M32 32h128v64H64v96H0V64c0-18 14-32 32-32zm256 0h128c18 0 32 14 32 32v128h-64V96h-96V32zM0 320h64v96h96v64H32c-18 0-32-14-32-32V320zm384 0h64v128c0 18-14 32-32 32H288v-64h96v-96z"/></symbol>
+        <symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64h416c26 0 48 22 48 48v16L256 288 0 128v-16c0-26 22-48 48-48zM0 176l240 150c10 6 22 6 32 0l240-150v224c0 26-22 48-48 48H48c-26 0-48-22-48-48V176z"/></symbol>
+        <symbol id="i-chevron-left" viewBox="0 0 320 512"><path d="M267 43c10 10 10 25 0 35L121 224l146 146c10 10 10 25 0 35s-25 10-35 0L70 241c-10-10-10-25 0-35L232 43c10-10 25-10 35 0z"/></symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 320 512"><path d="M53 43c10-10 25-10 35 0l162 163c10 10 10 25 0 35L88 405c-10 10-25 10-35 0s-10-25 0-35l146-146L53 78c-10-10-10-25 0-35z"/></symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 448 512"><path d="M438 239c10 10 10 26 0 36L294 419c-10 10-26 10-36 0s-10-26 0-36l100-100H24c-13 0-24-11-24-24s11-24 24-24h334L258 135c-10-10-10-26 0-36s26-10 36 0l144 140z"/></symbol>
+        <symbol id="i-star" viewBox="0 0 576 512"><path d="M288 0c9 0 17 5 21 13l70 143 157 23c9 1 16 7 19 16s0 18-6 24L435 330l27 157c2 9-2 18-9 23s-17 6-25 1l-140-74-140 74c-8 5-18 4-25-1s-11-14-9-23l27-157L26 219c-6-6-9-15-6-24s10-15 19-16l157-23L267 13c4-8 12-13 21-13z"/></symbol>
+        <symbol id="i-star-o" viewBox="0 0 576 512"><path d="M288 68l-53 108c-4 7-10 12-18 13l-119 17 86 84c6 6 8 14 7 22l-20 118 106-56c7-4 15-4 22 0l106 56-20-118c-1-8 1-16 7-22l86-84-119-17c-8-1-14-6-18-13L288 68zm21-55l70 143 157 23c9 1 16 7 19 16s0 18-6 24L435 330l27 157c2 9-2 18-9 23s-17 6-25 1l-140-74-140 74c-8 5-18 4-25-1s-11-14-9-23l27-157L26 219c-6-6-9-15-6-24s10-15 19-16l157-23L267 13c4-8 12-13 21-13s17 5 21 13z"/></symbol>
+    </svg>
+    <nav class="navbar" role="navigation" aria-label="Navigation principale">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" aria-label="Peace Magazine — accueil">
+                    <img src="/assets/images/opt/logo.webp" alt="Peace Magazine" class="logo-image" width="420" height="173">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="erreur">
+            <div class="container">
+                <p class="erreur-code">404</p>
+                <h1 class="display-title">CETTE PAGE<br>N'<em>EXISTE PAS</em></h1>
+                <p class="split-head-text" style="margin: 0 auto; max-width: 42ch;">
+                    Le lien que vous avez suivi ne mène nulle part. Revenez à l'accueil
+                    pour découvrir nos magazines personnalisés.
+                </p>
+                <div class="erreur-liens">
+                    <a href="/" class="btn-primary">Retour à l'accueil</a>
+                    <a href="/#commander" class="btn-secondary">Commander un magazine</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="footerYear">2026</span> Peace Magazine. Tous droits réservés.</p>
+                <p class="footer-parent">Filiale de <strong>Peace Agency</strong></p>
+            </div>
+        </div>
+    </footer>
+    <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+</body>
+</html>
